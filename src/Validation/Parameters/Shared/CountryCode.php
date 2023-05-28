@@ -1,6 +1,6 @@
 <?php
 
-namespace Drenth1\ApiSports\Validation\Parameters\Football;
+namespace Drenth1\ApiSports\Validation\Parameters\Shared;
 
 use Drenth1\ApiSports\Validation\Parameters\Parameter;
 
