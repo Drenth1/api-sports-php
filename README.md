@@ -7,7 +7,7 @@
 </p>
 
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/Drenth1/api-sports-php/php?label=php)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Drenth1/api-sports-php/phpunit-tests.yml?label=tests)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Drenth1/api-sports-php/tests.yml?label=tests)
 
 A robust, generic wrapper around all APIs provided by [api-sports.io](https://api-sports.io/).
 
@@ -46,7 +46,10 @@ $client->status();
 $client->countryByName('Netherlands'); 
 $client->countriesBySearch('Nor');
 
+$client->rawLeagues(['type' => 'cup', 'code' => 'NL']);
 // and many more...
 ````
+
+Most common cases are covered by a dedicated function, you may use the 'raw' methods per endpoint to combine parameters.
 
 For a complete endpoint reference, please see [the documentation](#).
