@@ -8,6 +8,16 @@ use Drenth1\ApiSports\Endpoints\Football\Countries;
 trait CountryEndpoints
 {
     /**
+     * Get all available countries.
+     *
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function countries() : ApiResponse
+    {
+        return $this->fetch(Countries::class);
+    }
+
+    /**
      * Get one or more countries by their name.
      *
      * @param string $name the name of the country/countries.
