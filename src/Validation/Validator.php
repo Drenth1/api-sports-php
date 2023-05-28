@@ -20,7 +20,7 @@ class Validator
 
         throw new \InvalidArgumentException(sprintf(
             '%s is not an allowed value (allowed values: %s)',
-            $variable, implode(' ,', $allowed)
+            $variable, implode(', ', $allowed)
         ));
     }
 
