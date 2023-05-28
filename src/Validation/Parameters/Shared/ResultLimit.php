@@ -1,10 +1,10 @@
 <?php
 
-namespace Drenth1\ApiSports\Validation\Parameters\Football;
+namespace Drenth1\ApiSports\Validation\Parameters\Shared;
 
 use Drenth1\ApiSports\Validation\Parameters\Parameter;
 
-class CountryCode extends Parameter
+class ResultLimit extends Parameter
 {
     /**
      * The rules that the Parameter should comply with.
@@ -12,7 +12,7 @@ class CountryCode extends Parameter
      * @var array[]
      */
     protected static array $rules = [
-        'dataType' => ['string'],
-        'stringLength' => [2, '=']
+        'dataType' => ['integer'],
+        'stringLength' => [2, '<=']
     ];
 }

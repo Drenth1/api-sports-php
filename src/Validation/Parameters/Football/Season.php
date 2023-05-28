@@ -4,7 +4,7 @@ namespace Drenth1\ApiSports\Validation\Parameters\Football;
 
 use Drenth1\ApiSports\Validation\Parameters\Parameter;
 
-class CountryName extends Parameter
+class Season extends Parameter
 {
     /**
      * The rules that the Parameter should comply with.
@@ -12,6 +12,7 @@ class CountryName extends Parameter
      * @var array[]
      */
     protected static array $rules = [
-        'dataType' => ['string']
+        'dataType' => ['integer'],
+        'stringLength' => [4, '=']
     ];
 }

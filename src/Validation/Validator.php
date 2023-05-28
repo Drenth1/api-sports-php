@@ -5,6 +5,26 @@ namespace Drenth1\ApiSports\Validation;
 class Validator
 {
     /**
+     * Check if a variable is in an 'enum' array.
+     *
+     * @param mixed $variable the variable to validate.
+     * @param array $allowed the values that are allowed.
+     * @return bool
+     */
+    public static function enum(mixed $variable, array $allowed) : bool
+    {
+        if (in_array($variable, $allowed))
+        {
+            return true;
+        }
+
+        throw new \InvalidArgumentException(sprintf(
+            '%s is not an allowed value (allowed values: %s)',
+            $variable, implode(', ', $allowed)
+        ));
+    }
+
+    /**
      * Check the datatype of a variable.
      *
      * @param mixed $variable the variable to validate.
@@ -18,6 +38,7 @@ class Validator
             'integer' => is_integer($variable),
             'string' => is_string($variable),
             'object' => is_object($variable),
+            'boolean' => is_bool($variable),
             'array' => is_array($variable),
             'float' => is_float($variable),
 

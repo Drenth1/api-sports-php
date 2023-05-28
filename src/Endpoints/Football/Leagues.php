@@ -5,9 +5,15 @@ namespace Drenth1\ApiSports\Endpoints\Football;
 use Drenth1\ApiSports\Core\Endpoint;
 use Drenth1\ApiSports\Validation\Parameters\Shared\Name;
 use Drenth1\ApiSports\Validation\Parameters\Shared\Search;
+use Drenth1\ApiSports\Validation\Parameters\Shared\Boolean;
+use Drenth1\ApiSports\Validation\Parameters\Shared\Country;
+use Drenth1\ApiSports\Validation\Parameters\Football\Season;
+use Drenth1\ApiSports\Validation\Parameters\Shared\Identifier;
 use Drenth1\ApiSports\Validation\Parameters\Shared\CountryCode;
+use Drenth1\ApiSports\Validation\Parameters\Shared\ResultLimit;
+use Drenth1\ApiSports\Validation\Parameters\Football\LeagueType;
 
-class Countries extends Endpoint
+class Leagues extends Endpoint
 {
     /**
      * Get an array of possible request parameters for the Endpoint.
@@ -18,9 +24,16 @@ class Countries extends Endpoint
     public static function parameters(string $version) : array
     {
         return [
+            'id' => Identifier::class,
             'name' => Name::class,
+            'country' => Country::class,
             'code' => CountryCode::class,
-            'search' => Search::class
+            'season' => Season::class,
+            'team' => Identifier::class,
+            'type' => LeagueType::class,
+            'current' => Boolean::class,
+            'search' => Search::class,
+            'last' => ResultLimit::class
         ];
     }
 
@@ -32,6 +45,6 @@ class Countries extends Endpoint
      */
     public static function path(string $version) : string
     {
-        return 'countries';
+        return 'leagues';
     }
 }

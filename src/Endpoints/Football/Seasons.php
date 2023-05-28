@@ -3,11 +3,8 @@
 namespace Drenth1\ApiSports\Endpoints\Football;
 
 use Drenth1\ApiSports\Core\Endpoint;
-use Drenth1\ApiSports\Validation\Parameters\Shared\Name;
-use Drenth1\ApiSports\Validation\Parameters\Shared\Search;
-use Drenth1\ApiSports\Validation\Parameters\Shared\CountryCode;
 
-class Countries extends Endpoint
+class Seasons extends Endpoint
 {
     /**
      * Get an array of possible request parameters for the Endpoint.
@@ -17,11 +14,7 @@ class Countries extends Endpoint
      */
     public static function parameters(string $version) : array
     {
-        return [
-            'name' => Name::class,
-            'code' => CountryCode::class,
-            'search' => Search::class
-        ];
+        return [];
     }
 
     /**
@@ -32,6 +25,6 @@ class Countries extends Endpoint
      */
     public static function path(string $version) : string
     {
-        return 'countries';
+        return 'leagues/seasons';
     }
 }
