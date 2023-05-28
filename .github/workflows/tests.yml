@@ -20,4 +20,4 @@ jobs:
       - uses: php-actions/composer@v6
       - uses: php-actions/phpunit@v3
         with:
-          php_version: 8.1
+          php_version: 8.2
