@@ -13,6 +13,6 @@ class Season extends Parameter
      */
     protected static array $rules = [
         'dataType' => ['integer'],
-        'strLength' => [4, '=']
+        'stringLength' => [4, '=']
     ];
 }
