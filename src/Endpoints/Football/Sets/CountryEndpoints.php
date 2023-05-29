@@ -4,6 +4,7 @@ namespace Drenth1\ApiSports\Endpoints\Football\Sets;
 
 use Drenth1\ApiSports\Core\ApiResponse;
 use Drenth1\ApiSports\Endpoints\Football\Countries;
+use Drenth1\ApiSports\Endpoints\Football\TeamCountries;
 
 trait CountryEndpoints
 {
@@ -15,6 +16,16 @@ trait CountryEndpoints
     public function countries() : ApiResponse
     {
         return $this->fetch(Countries::class);
+    }
+
+    /**
+     * Get a list of available countries for the teams endpoints.
+     *
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function teamCountries() : ApiResponse
+    {
+        return $this->fetch(TeamCountries::class);
     }
 
     /**
