@@ -10,6 +10,7 @@ use Drenth1\ApiSports\Endpoints\Football\Sets\LeagueEndpoints;
 use Drenth1\ApiSports\Endpoints\Football\Sets\SeasonEndpoints;
 use Drenth1\ApiSports\Endpoints\Football\Sets\CountryEndpoints;
 use Drenth1\ApiSports\Endpoints\Football\Sets\TimezoneEndpoints;
+use Drenth1\ApiSports\Endpoints\Football\Sets\StandingEndpoints;
 
 class Football extends Client
 {
@@ -20,4 +21,5 @@ class Football extends Client
     use SeasonEndpoints;
     use CountryEndpoints;
     use TimezoneEndpoints;
+    use StandingEndpoints;
 }
