@@ -3,9 +3,13 @@
 namespace Drenth1\ApiSports\Endpoints\Football\Sets;
 
 use Drenth1\ApiSports\Core\ApiResponse;
+use Drenth1\ApiSports\Endpoints\Football\FixturePlayerStatistics;
 use Drenth1\ApiSports\Endpoints\Football\Fixtures;
 use Drenth1\ApiSports\Endpoints\Football\HeadToHead;
 use Drenth1\ApiSports\Endpoints\Football\FixtureRounds;
+use Drenth1\ApiSports\Endpoints\Football\FixtureEvents;
+use Drenth1\ApiSports\Endpoints\Football\FixtureLineups;
+use Drenth1\ApiSports\Endpoints\Football\FixtureStatistics;
 
 trait FixtureEndpoints
 {
@@ -201,5 +205,105 @@ trait FixtureEndpoints
     public function rawH2H(array $parameters) : ApiResponse
     {
         return $this->fetch(HeadToHead::class, $parameters);
+    }
+
+    /**
+     * Get the statistics for a fixture.
+     *
+     * @param int $id the unique identifier of the fixture.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function fixtureStatistics(int $id) : ApiResponse
+    {
+        return $this->fetch(FixtureStatistics::class, [
+            'fixture' => $id
+        ]);
+    }
+
+    /**
+     * Combine a custom array of parameters to get a subset of fixture statistics.
+     *
+     * @param array $parameters the parameters to add to the request.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function rawFixtureStatistics(array $parameters) : ApiResponse
+    {
+        return $this->fetch(FixtureStatistics::class, $parameters);
+    }
+
+    /**
+     * Get the events for a fixture.
+     *
+     * @param int $id the unique identifier of the fixture.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function fixtureEvents(int $id) : ApiResponse
+    {
+        return $this->fetch(FixtureEvents::class, [
+            'fixture' => $id
+        ]);
+    }
+
+    /**
+     * Combine a custom array of parameters to get a subset of fixture events.
+     *
+     * @param array $parameters the parameters to add to the request.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function rawFixtureEvents(array $parameters) : ApiResponse
+    {
+        return $this->fetch(FixtureEvents::class, $parameters);
+    }
+
+    /**
+     * Get the lineups for a fixture.
+     *
+     * @param int $id the unique identifier of the fixture.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function fixtureLineups(int $id) : ApiResponse
+    {
+        return $this->fetch(FixtureLineups::class, [
+            'fixture' => $id
+        ]);
+    }
+
+    /**
+     * Combine a custom array of parameters to get a subset of fixture lineups.
+     *
+     * @param array $parameters the parameters to add to the request.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function rawFixtureLineups(array $parameters) : ApiResponse
+    {
+        return $this->fetch(FixtureLineups::class, $parameters);
+    }
+
+    /**
+     * Get the player statistics for a fixture.
+     *
+     * @param int $id the unique identifier of the fixture.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function fixturePlayerStatistics(int $id) : ApiResponse
+    {
+        return $this->fetch(FixturePlayerStatistics::class, [
+            'fixture' => $id
+        ]);
+    }
+
+    /**
+     * Get the player statistics for a team in a fixture.
+     *
+     * @param int $fixture_id the unique identifier of the fixture.
+     * @param int $team_id the unique identifier of the team
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function fixturePlayerStatisticsTeam(int $fixture_id, int $team_id) : ApiResponse
+    {
+        return $this->fetch(FixturePlayerStatistics::class, [
+            'fixture' => $fixture_id,
+            'team' => $team_id
+        ]);
     }
 }
