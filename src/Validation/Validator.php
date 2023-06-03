@@ -5,6 +5,26 @@ namespace Drenth1\ApiSports\Validation;
 class Validator
 {
     /**
+     * Check if a value matches a regular expression.
+     *
+     * @param mixed $variable the variable to validate.
+     * @param string $pattern the regular expression to match.
+     * @return bool
+     */
+    public static function regex(mixed $variable, string $pattern) : bool
+    {
+        if (preg_match($pattern, $variable))
+        {
+            return true;
+        }
+
+        throw new \InvalidArgumentException(sprintf(
+            '%s does not match pattern: %s',
+            $variable, $pattern
+        ));
+    }
+
+    /**
      * Check if a variable is in an 'enum' array.
      *
      * @param mixed $variable the variable to validate.

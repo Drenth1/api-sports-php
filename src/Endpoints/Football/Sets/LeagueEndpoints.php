@@ -55,6 +55,19 @@ trait LeagueEndpoints
     }
 
     /**
+     * Get the leagues in a country by the two-letter code of the country.
+     *
+     * @param string $code the two-letter code of the country.
+     * @return \Drenth1\ApiSports\Core\ApiResponse
+     */
+    public function leaguesByCountryCode(string $code) : ApiResponse
+    {
+        return $this->fetch(Leagues::class, [
+            'code' => $code
+        ]);
+    }
+
+    /**
      * Get the leagues by their type.
      *
      * @param string $type the type to fetch.
