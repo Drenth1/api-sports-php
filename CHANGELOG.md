@@ -2,6 +2,26 @@
 
 All notable changes to the project will be documented here.
 
+## [1.1.1] - 03-06-2023
+
+This release adds more validators, parameters and various endpoints.
+
+### Added
+
+- Endpoint and methods for fixtures
+- Endpoint and methods for fixture events
+- Endpoint and methods for fixture statistics
+- Endpoint and methods for fixture lineups
+- Endpoint and methods for fixture player statistics
+- Endpoint and methods for venues
+- Endpoint and methods for season standings
+- Endpoint and methods for head-to-head data
+- Endpoint and methods for teams
+- Regex-based validation
+- Date parameter
+- Team code parameter
+- Other parameters for football
+
 ## [1.0.1] - 28-05-2023
 
 This release adds a variety of endpoints for the football client.
