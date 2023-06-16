@@ -31,8 +31,8 @@ abstract class Client
     /**
      * Create a new instance of the Client.
      *
-     * @param Provider $provider the Provider to use.
-     * @param string $apiKey the api key to use during requests.
+     * @param Provider $provider The Provider to use.
+     * @param string $apiKey The api key to use during requests.
      * @return void
      */
     public function __construct(Provider $provider, string $apiKey)
@@ -49,18 +49,18 @@ abstract class Client
     /**
      * Perform a request on an Endpoint using optional url parameters and request queries.
      *
-     * @param string $endpoint the fully-qualified class name of the Endpoint to fetch.
-     * @param array $parameters = [] the request parameters to use, depends on endpoint.
-     * @return \Drenth1\ApiSports\Core\ApiResponse
+     * @param string $endpoint The fully-qualified class name of the Endpoint to fetch.
+     * @param array $parameters = [] The request parameters to use, depends on endpoint.
+     * @return \Drenth1\ApiSports\Core\Response
      */
-    protected function fetch(string $endpoint, array $parameters = []) : ApiResponse
+    protected function fetch(string $endpoint, array $parameters = []) : Response
     {
-        $path = call_user_func([$endpoint, 'path'], $this->provider->getVersion());
+        $path = call_user_func([$endpoint, 'url'], $this->provider->getVersion());
 
         try
         {
             $parametersRequired = (
-                call_user_func([$endpoint, 'allowsParameters'], $this->provider->getVersion()) &&
+                call_user_func([$endpoint, 'supportsParameters'], $this->provider->getVersion()) &&
                 call_user_func_array([$endpoint, 'hasValidParameters'], [$this->provider->getVersion(), $parameters])
             );
 
@@ -76,7 +76,7 @@ abstract class Client
             ));
         }
 
-        return new ApiResponse($response);
+        return new Response($response);
     }
 
     /**

@@ -5,7 +5,7 @@ namespace Drenth1\ApiSports\Core;
 abstract class Provider
 {
     /**
-     * The version of the Provider that should be used, set at runtime.
+     * The version of the API to use, set by the Client.
      *
      * @var string
      */
@@ -16,7 +16,7 @@ abstract class Provider
      *
      * @var string[]
      */
-    protected array $supportedVersions;
+    protected array $supportedVersions = ['*'];
 
     /**
      * Get the base url of the Provider  per version.
@@ -42,7 +42,7 @@ abstract class Provider
     /**
      * Create a new instance of a Provider and validate and set the version.
      *
-     * @param string $version the version of the api to use.
+     * @param string $version The version of the API to use.
      * @return void
      */
     public function __construct(string $version)
@@ -51,7 +51,7 @@ abstract class Provider
     }
 
     /**
-     * Get the version of the api that is being used.
+     * Get the version of the API that is being used.
      *
      * @return string
      */
@@ -73,7 +73,7 @@ abstract class Provider
     /**
      * Validate and set the version for the Provider.
      *
-     * @param string $version the version of the api to use.
+     * @param string $version The version of the API to use.
      * @return void
      */
     protected function setVersion(string $version) : void
