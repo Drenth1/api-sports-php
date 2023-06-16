@@ -10,6 +10,13 @@ use GuzzleHttp\Psr7\Response as GuzzleResponse;
 class AttributeAccessTest extends TestCase
 {
     /**
+     * The test response.
+     *
+     * @var \Drenth1\ApiSports\Core\Response
+     */
+    protected Response $response;
+
+    /**
      * The setup to run prior to each test.
      *
      * @return void
