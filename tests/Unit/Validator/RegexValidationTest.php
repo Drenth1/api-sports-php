@@ -2,22 +2,26 @@
 
 namespace Drenth1\ApiSports\Tests\Unit\Validator;
 
-use Drenth1\ApiSports\Tests\BaseTestCase;
+use Drenth1\ApiSports\Tests\TestCase;
 use Drenth1\ApiSports\Validation\Validator;
 
-/** @testdox The regex Validator */
-class RegexValidationTest extends BaseTestCase
+/** @testdox \Drenth1\ApiSports\Validation\Validator */
+class RegexValidationTest extends TestCase
 {
-    /** @testdox throws an error on invalid value */
-    public function test_enum_validator_throws_error_regex_pattern_mismatch(): void
+    /** @testdox Regex (Match Pattern) */
+    public function test_regex_validation_match_single_pattern() : void
     {
-        $this->expectException('InvalidArgumentException');
-        Validator::regex('wrong', '@\d{4}-\d{2}-\d{2}@');
+        $this->assertTrue(Validator::regex('2023-16-10', '@\d{4}-\d{2}-\d{2}@'));
+        $this->assertFalse(Validator::regex('11-11-11', '@\d{4}-\d{2}-\d{2}@'));
     }
 
-    /** @testdox validates a value using a regex pattern */
-    public function test_enum_validator_returns_true_on_regex_pattern_match(): void
+    /** @testdox Regex (Match Any) */
+    public function test_regex_validation_match_any_pattern() : void
     {
-        $this->assertTrue(Validator::regex('1111-11-11', '@\d{4}-\d{2}-\d{2}@'));
+        $patterns = ['@\d{4}-\d{2}-\d{2}@', '@\d{4}-\d{2}-\d{4}@'];
+
+        $this->assertTrue(Validator::regexAny('2023-16-10', $patterns));
+        $this->assertTrue(Validator::regexAny('2023-16-2023', $patterns));
+        $this->assertFalse(Validator::regexAny('invalid', $patterns));
     }
 }

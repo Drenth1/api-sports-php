@@ -3,13 +3,13 @@
 namespace Drenth1\ApiSports\Tests\Unit\ClientFactory;
 
 use Drenth1\ApiSports\ClientFactory;
-use Drenth1\ApiSports\Tests\BaseTestCase;
+use Drenth1\ApiSports\Tests\TestCase;
 use Drenth1\ApiSports\Validation\Enums\Host;
 
-/** @testdox The ClientFactory */
-class ClientFactoryResolvingTest extends BaseTestCase
+/** @testdox \Drenth1\ApiSports\ClientFactory */
+class ClientFactoryResolvingTest extends TestCase
 {
-    /** @testdox correctly resolves a Football client for ApiSports */
+    /** @testdox Resolve To Client */
     public function test_client_factory_resolves_football_apisports() : void
     {
         $client = ClientFactory::football(Host::ApiSports, 'v3', 'xxxxx');

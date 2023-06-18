@@ -3,34 +3,41 @@
 namespace Drenth1\ApiSports\Endpoints\Football;
 
 use Drenth1\ApiSports\Core\Endpoint;
-use Drenth1\ApiSports\Validation\Parameters\Shared\Name;
-use Drenth1\ApiSports\Validation\Parameters\Shared\Search;
-use Drenth1\ApiSports\Validation\Parameters\Shared\CountryCode;
+use Drenth1\ApiSports\Validation\Parameters\Generic\Name;
+use Drenth1\ApiSports\Validation\Parameters\Generic\SearchTerm;
+use Drenth1\ApiSports\Validation\Parameters\Generic\CountryCode;
 
 class Countries extends Endpoint
 {
     /**
-     * Get an array of possible request parameters for the Endpoint.
+     * The API versions in which the Endpoint is supported.
      *
-     * @param string $version the version of the api to use.
+     * @var array
+     */
+    protected static array $supportedVersions = ['v3'];
+
+    /**
+     * Get the supported parameters for a version of the Endpoint.
+     *
+     * @param string $version The version of the API to use.
      * @return array
      */
-    public static function parameters(string $version) : array
+    public static function supportedParameters(string $version) : array
     {
         return [
             'name' => Name::class,
             'code' => CountryCode::class,
-            'search' => Search::class
+            'search' => SearchTerm::class
         ];
     }
 
     /**
-     * Get the URL-path for the Endpoint.
+     * Get the URL for a version of the Endpoint.
      *
-     * @param string $version the version of the api to use.
+     * @param string $version The version of the API to use.
      * @return string
      */
-    public static function path(string $version) : string
+    public static function url(string $version) : string
     {
         return 'countries';
     }

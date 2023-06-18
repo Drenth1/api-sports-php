@@ -5,74 +5,96 @@ namespace Drenth1\ApiSports\Core;
 abstract class Endpoint
 {
     /**
-     * The array of api versions in which this Endpoint is supported.
+     * The API versions in which the Endpoint is supported.
      *
      * @var array
      */
-    public static array $supportedVersions = ['*'];
+    protected static array $supportedVersions = ['*'];
 
     /**
-     * Get an array of possible request parameters for the Endpoint.
+     * Get the supported parameters for a version of the Endpoint.
      *
-     * @param string $version the version of the api to use.
+     * @param string $version The version of the API to use.
      * @return array
      */
-    abstract public static function parameters(string $version) : array;
+    abstract public static function supportedParameters(string $version) : array;
 
     /**
-     * Get the URL-path for the Endpoint.
+     * Get the URL for a version of the Endpoint.
      *
-     * @param string $version the version of the api to use.
+     * @param string $version The version of the API to use.
      * @return string
      */
-    abstract public static function path(string $version) : string;
+    abstract public static function url(string $version) : string;
 
     /**
-     * Check if an array of parameters contains any keys that are not compatible with the Endpoint.
+     * Determine whether an array of parameters is valid for the Endpoint.
      *
-     * @param string $version the version of the api to use.
-     * @param array $parameters the array of parameters to check.
+     * @param string $version The version of the API to use.
+     * @param array $parameters The parameters to validate.
      * @return bool
      */
     public static function hasValidParameters(string $version, array $parameters) : bool
     {
-        if  (!(count(array_intersect(array_keys(static::parameters($version)), array_keys($parameters))) === count($parameters)))
+        // Pointless to run validation when the Endpoint does not need parameters.
+        if (!static::supportsParameters($version)) return true;
+
+        if ((count(array_intersect(array_keys(static::supportedParameters($version)), array_keys($parameters))) !== count($parameters)))
         {
             throw new \InvalidArgumentException(sprintf(
-                'Parameter array for Endpoint %s contains illegal values, only %s are allowed',
-                get_class(new static), implode(', ', array_keys(static::parameters($version)))
+                'Parameter array for Endpoint %s contains illegal keys, only %s are allowed',
+                get_class(new static), implode(', ', array_keys(static::supportedParameters($version)))
             ));
         }
 
-        $validators = static::parameters($version);
-
-        foreach ($parameters as $name => $value)
-        {
-            call_user_func([$validators[$name], 'check'], $value);
-        }
+        // The validator will throw errors on invalid parameters.
+        static::runParameterValidation($version, $parameters);
 
         return true;
     }
 
     /**
-     * Check if the Endpoint has any possible parameters.
+     * Run the validation rules for the parameters in the parameters array.
      *
-     * @param string $version the version of the api to use.
-     * @return bool
+     * @param string $version The version of the API to use.
+     * @param array $parameters The array of parameters to validate.
+     * @return void
      */
-    public static function allowsParameters(string $version) : bool
+    protected static function runParameterValidation(string $version, array $parameters) : void
     {
-        return !empty(static::parameters($version));
+        $validatorClasses = static::supportedParameters($version);
+
+        foreach ($parameters as $name => $value)
+        {
+            call_user_func([
+                $validatorClasses[$name],
+                'validate'
+            ], $value);
+        }
     }
 
     /**
-     * Check if the Endpoint is supported in a certain version.
+     * Determine whether the Endpoint supports any parameters.
      *
-     * @param string $version the version of the api to check.
+     * @param string $version The version of the API to use.
      * @return bool
      */
-    public static function isSupportedIn(string $version) : bool
+    public static function supportsParameters(string $version) : bool
     {
-        return (in_array($version, static::$supportedVersions) || in_array('*', static::$supportedVersions));
+        return !empty(static::supportedParameters($version));
+    }
+
+    /**
+     * Determine whether the Endpoint is supported in a version.
+     *
+     * @param string $version The version to check.
+     * @return bool
+     */
+    public static function supportedInVersion(string $version) : bool
+    {
+        return (
+            in_array('*', static::$supportedVersions) ||
+            in_array($version, static::$supportedVersions)
+        );
     }
 }

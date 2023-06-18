@@ -7,23 +7,30 @@ use Drenth1\ApiSports\Core\Endpoint;
 class TeamCountries extends Endpoint
 {
     /**
-     * Get an array of possible request parameters for the Endpoint.
+     * The API versions in which the Endpoint is supported.
      *
-     * @param string $version the version of the api to use.
+     * @var array
+     */
+    protected static array $supportedVersions = ['v3'];
+
+    /**
+     * Get the supported parameters for a version of the Endpoint.
+     *
+     * @param string $version The version of the API to use.
      * @return array
      */
-    public static function parameters(string $version) : array
+    public static function supportedParameters(string $version) : array
     {
         return [];
     }
 
     /**
-     * Get the URL-path for the Endpoint.
+     * Get the URL for a version of the Endpoint.
      *
-     * @param string $version the version of the api to use.
+     * @param string $version The version of the API to use.
      * @return string
      */
-    public static function path(string $version) : string
+    public static function url(string $version) : string
     {
         return 'teams/countries';
     }

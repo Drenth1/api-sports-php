@@ -2,14 +2,14 @@
 
 namespace Drenth1\ApiSports\Validation\Parameters\Football;
 
-use Drenth1\ApiSports\Validation\Parameters\Parameter;
+use Drenth1\ApiSports\Validation\Parameter;
 
 class LeagueType extends Parameter
 {
     /**
-     * The rules that the Parameter should comply with.
+     * The rules that the Parameter must pass.
      *
-     * @var array[]
+     * @var array
      */
     protected static array $rules = [
         'dataType' => ['string'],
