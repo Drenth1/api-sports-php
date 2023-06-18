@@ -4,6 +4,7 @@ namespace Drenth1\ApiSports\Core\Methods\Football;
 
 use Drenth1\ApiSports\Core\Response;
 use Drenth1\ApiSports\Endpoints\Football\Coaches;
+use Drenth1\ApiSports\Endpoints\Football\Trophies;
 
 trait FetchesCoachEndpoints
 {
@@ -30,6 +31,19 @@ trait FetchesCoachEndpoints
     {
         return $this->fetch(Coaches::class, [
             'team' => $id
+        ]);
+    }
+
+    /**
+     * Get the trophies that a coach won.
+     *
+     * @param int $id The id of the coach.
+     * @return \Drenth1\ApiSports\Core\Response
+     */
+    public function trophiesByCoach(int $id) : Response
+    {
+        return $this->fetch(Trophies::class, [
+            'coach' => $id
         ]);
     }
 
