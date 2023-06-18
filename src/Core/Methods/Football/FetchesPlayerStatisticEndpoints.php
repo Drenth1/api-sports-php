@@ -5,6 +5,7 @@ namespace Drenth1\ApiSports\Core\Methods\Football;
 use Drenth1\ApiSports\Core\Response;
 use Drenth1\ApiSports\Endpoints\Football\Squads;
 use Drenth1\ApiSports\Endpoints\Football\Players;
+use Drenth1\ApiSports\Endpoints\Football\Transfers;
 use Drenth1\ApiSports\Endpoints\Football\PlayerStatisticSeasons;
 
 trait FetchesPlayerStatisticEndpoints
@@ -68,6 +69,19 @@ trait FetchesPlayerStatisticEndpoints
     {
         return $this->fetch(Squads::class, [
             'team' => $id
+        ]);
+    }
+
+    /**
+     * Get the transfers for a player.
+     *
+     * @param int $id The id of the player.
+     * @return \Drenth1\ApiSports\Core\Response
+     */
+    public function transfersByPlayer(int $id) : Response
+    {
+        return $this->fetch(Transfers::class, [
+            'player' => $id
         ]);
     }
 

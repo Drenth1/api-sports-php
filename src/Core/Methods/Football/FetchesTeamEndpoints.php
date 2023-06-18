@@ -4,6 +4,7 @@ namespace Drenth1\ApiSports\Core\Methods\Football;
 
 use Drenth1\ApiSports\Core\Response;
 use Drenth1\ApiSports\Endpoints\Football\Teams;
+use Drenth1\ApiSports\Endpoints\Football\Transfers;
 use Drenth1\ApiSports\Endpoints\Football\TeamSeasons;
 use Drenth1\ApiSports\Endpoints\Football\TeamCountries;
 
@@ -122,6 +123,19 @@ trait FetchesTeamEndpoints
     {
         return $this->fetch(Teams::class, [
             'venue' => $id
+        ]);
+    }
+
+    /**
+     * Get the transfers for a team.
+     *
+     * @param int $id The id of the team.
+     * @return \Drenth1\ApiSports\Core\Response
+     */
+    public function transfersByTeam(int $id) : Response
+    {
+        return $this->fetch(Transfers::class, [
+            'team' => $id
         ]);
     }
 
