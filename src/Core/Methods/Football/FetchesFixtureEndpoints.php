@@ -4,6 +4,7 @@ namespace Drenth1\ApiSports\Core\Methods\Football;
 
 use Drenth1\ApiSports\Core\Response;
 use Drenth1\ApiSports\Endpoints\Football\Fixtures;
+use Drenth1\ApiSports\Endpoints\Football\Predictions;
 
 trait FetchesFixtureEndpoints
 {
@@ -154,6 +155,19 @@ trait FetchesFixtureEndpoints
         return $this->fetch(Fixtures::class, [
             'team' => $id,
             'last' => $limit
+        ]);
+    }
+
+    /**
+     * Get the predictions for a fixture.
+     *
+     * @param int $id The id of the fixture.
+     * @return \Drenth1\ApiSports\Core\Response
+     */
+    public function fixturePredictions(int $id) : Response
+    {
+        return $this->fetch(Predictions::class, [
+            'fixture' => $id
         ]);
     }
 
