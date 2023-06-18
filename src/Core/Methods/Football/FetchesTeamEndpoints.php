@@ -4,9 +4,34 @@ namespace Drenth1\ApiSports\Core\Methods\Football;
 
 use Drenth1\ApiSports\Core\Response;
 use Drenth1\ApiSports\Endpoints\Football\Teams;
+use Drenth1\ApiSports\Endpoints\Football\TeamSeasons;
+use Drenth1\ApiSports\Endpoints\Football\TeamCountries;
 
 trait FetchesTeamEndpoints
 {
+    /**
+     * Get the list of seasons available for a team.
+     *
+     * @param int $id The id of the team.
+     * @return \Drenth1\ApiSports\Core\Response
+     */
+    public function teamSeasons(int $id) : Response
+    {
+        return $this->fetch(TeamSeasons::class, [
+            'team' => $id
+        ]);
+    }
+
+    /**
+     * Get the list of countries available for the team endpoint.
+     *
+     * @return \Drenth1\ApiSports\Core\Response
+     */
+    public function teamCountries() : Response
+    {
+        return $this->fetch(TeamCountries::class);
+    }
+
     /**
      * Get a team by its unique identifier.
      *
