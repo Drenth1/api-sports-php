@@ -51,5 +51,3 @@ $client->rawLeagues(['type' => 'cup', 'code' => 'NL']);
 ````
 
 Most common cases are covered by a dedicated function, you may use the 'raw' methods per endpoint to combine parameters.
-
-For a complete endpoint reference, please see [the documentation](https://api-sports-php.gitbook.io/api-sports-php-docs/).
