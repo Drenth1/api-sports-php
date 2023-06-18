@@ -7,7 +7,7 @@
 </p>
 
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/Drenth1/api-sports-php/php?label=php)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Drenth1/api-sports-php/tests.yml?label=tests)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Drenth1/api-sports-php/phpunit.yml?label=tests)
 
 A robust, generic wrapper around all APIs provided by [api-sports.io](https://api-sports.io/).
 
