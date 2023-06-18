@@ -99,4 +99,15 @@ trait FetchesTeamEndpoints
             'venue' => $id
         ]);
     }
+
+    /**
+     * Get a subset of teams using a custom set of parameters.
+     *
+     * @param array $parameters The custom set of parameters to use.
+     * @return \Drenth1\ApiSports\Core\Response
+     */
+    public function rawTeams(array $parameters) : Response
+    {
+        return $this->fetch(Teams::class, $parameters);
+    }
 }
