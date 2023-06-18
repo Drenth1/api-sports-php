@@ -13,6 +13,6 @@ class FixtureLineupType extends Parameter
      */
     protected static array $rules = [
         'dataType' => ['string'],
-        'enum' => [['Formation', 'Coach', 'Start XI', 'Substitutes']]
+        'enum' => [['formation', 'coach', 'startxi', 'substitutes']]
     ];
 }
