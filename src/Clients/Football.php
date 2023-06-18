@@ -14,6 +14,7 @@ use Drenth1\ApiSports\Core\Methods\Football\FetchesTimezoneEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesHeadToHeadEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesFixtureEventEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesFixtureRoundEndpoints;
+use Drenth1\ApiSports\Core\Methods\Football\FetchesFixtureLineupEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesTeamStatisticEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesSeasonStandingEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesFixtureStatisticEndpoints;
@@ -31,6 +32,7 @@ class Football extends Client
     use FetchesHeadToHeadEndpoints;
     use FetchesFixtureEventEndpoints;
     use FetchesFixtureRoundEndpoints;
+    use FetchesFixtureLineupEndpoints;
     use FetchesTeamStatisticEndpoints;
     use FetchesSeasonStandingEndpoints;
     use FetchesFixtureStatisticEndpoints;
