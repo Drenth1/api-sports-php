@@ -18,6 +18,7 @@ use Drenth1\ApiSports\Core\Methods\Football\FetchesFixtureLineupEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesTeamStatisticEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesSeasonStandingEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesFixtureStatisticEndpoints;
+use Drenth1\ApiSports\Core\Methods\Football\FetchesFixturePlayerStatisticsEndpoints;
 
 class Football extends Client
 {
@@ -36,4 +37,5 @@ class Football extends Client
     use FetchesTeamStatisticEndpoints;
     use FetchesSeasonStandingEndpoints;
     use FetchesFixtureStatisticEndpoints;
+    use FetchesFixturePlayerStatisticsEndpoints;
 }
