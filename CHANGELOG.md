@@ -2,6 +2,31 @@
 
 All notable changes to the project will be documented here.
 
+## [2.1.1] - 18-06-2023
+
+This release refactors validation and adds many football endpoints.
+
+### Added
+
+- Tests for all parameter types
+- Tests for core classes
+- More abstract parameters
+- Injury Endpoint
+- Transfer Endpoint
+- Trophy Endpoint
+- Predictions Endpoint
+- Fixture Event Endpoint
+- H2H Endpoint
+- Lineup Endpoints
+- More football parameters
+
+### Changed
+
+- Refactor Validator
+- Refactor Class structure
+- phpunit 10.2 (was 10.1)
+- Testing structure
+
 ## [1.1.1] - 03-06-2023
 
 This release adds more validators, parameters and various endpoints.
