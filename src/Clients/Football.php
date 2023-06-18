@@ -11,6 +11,7 @@ use Drenth1\ApiSports\Core\Methods\Football\FetchesLeaguesEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesCountryEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesTimezoneEndpoints;
 use Drenth1\ApiSports\Core\Methods\Football\FetchesTeamStatisticEndpoints;
+use Drenth1\ApiSports\Core\Methods\Football\FetchesSeasonStandingEndpoints;
 
 class Football extends Client
 {
@@ -22,4 +23,5 @@ class Football extends Client
     use FetchesLeaguesEndpoints;
     use FetchesTimezoneEndpoints;
     use FetchesTeamStatisticEndpoints;
+    use FetchesSeasonStandingEndpoints;
 }
